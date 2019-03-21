@@ -15,10 +15,8 @@ import java.nio.charset.StandardCharsets;
 public final class HmacUtils {
     public static final String HMAC_SHA_256 = "HmacSHA256";
     public static final String AUTHENTICATION = "Authentication";
-    public static final String ENCODING_CLAIM_PROPERTY = "l-lev";
 
     public static final String X_PK_SIGNATURE = "X-PK-Signature";
-    public static final String X_PK_KEY = "X-PK-KEY";
     public static final String X_PK_TIMESTAMP = "X-PK-Timestamp";
 
     public static String sign(WrappedRequest request, String secret, String accessToken, String body, String timestamp) throws HmacException, IOException {
@@ -43,7 +41,9 @@ public final class HmacUtils {
                     .concat(":")
                     .concat(timestamp);
         }
-        log.info("HMAC Message Server {}", message);
+        if (log.isDebugEnabled()) {
+            log.info("HMAC Message Server {}", message);
+        }
         return hmacSha256(secret, message);
     }
 
@@ -77,7 +77,7 @@ public final class HmacUtils {
             digest = hash.toString();
         } catch (Exception e) {
             log.debug("Error while encoding request with hmac");
-            log.info("Error while encoding request with hmac {}", e);
+            log.trace("Error while encoding request with hmac {}", e);
             throw new HmacException("Error while encoding request with hmac");
         }
         return digest;
