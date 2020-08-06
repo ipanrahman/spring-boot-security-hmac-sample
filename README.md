@@ -1,2 +1,1 @@
-# spring-boot-audit-sample
-Spring Boot Audit Sample
+Spring Boot Security HMAC Sample
