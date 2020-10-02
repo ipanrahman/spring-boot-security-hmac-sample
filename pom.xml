@@ -11,7 +11,7 @@
     <groupId>com.ipan97</groupId>
     <artifactId>spring-boot-audit-sample</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-audit-sample</name>
+    <name>spring-boot-security-hmac-sample</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
